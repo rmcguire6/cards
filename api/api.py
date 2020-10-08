@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, ForeignKey
 from flask_marshmallow import Marshmallow
 import os
 
@@ -22,19 +22,33 @@ def homepage():
 
 # database models
 
-class SpanishWord(db.Model):
+class Spanish(db.Model):
     __tablename__ = 'spanish'
     id = Column(Integer, primary_key=True)
     word = Column(String, nullable=False)
     part = Column(String, nullable=False)
     group = Column(String, default='')
 
-class SpanishWordSchema(ma.Schema):
+class SpanishSchema(ma.Schema):
     class Meta:
         fields = ('id','word', 'part', 'group')
 
-spanish_word_schema = SpanishWordSchema()
-spanish_words_schema = SpanishWordSchema(many=True)
+spanish_word_schema = SpanishSchema()
+spanish_words_schema = SpanishSchema(many=True)
+
+class EnglishWord(db.Model):
+    __tablename__='english'
+    id = Column(Integer, primary_key=True)
+    word = Column(String, nullable=False)
+    spanish_match = Column(Integer, ForeignKey("spanish.id"))
+
+class EnglishSchema(ma.Schema):
+    class Meta:
+        model = English
+        include_fk = True
+
+english_word_schema = EnglishSchema()
+english_words_schema = EnglishSchema(many=True)
 
 # cli commands
 
