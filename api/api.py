@@ -20,6 +20,22 @@ def create_tables():
 def homepage():
     return ('homepage')
 
+# database models
+
+class SpanishWord(db.Model):
+    __tablename__ = 'spanish'
+    id = Column(Integer, primary_key=True)
+    word = Column(String, nullable=False)
+    part = Column(String, nullable=False)
+    group = Column(String, default='')
+
+class SpanishWordSchema(ma.Schema):
+    class Meta:
+        fields = ('id','word', 'part', 'group')
+
+spanish_word_schema = SpanishWordSchema()
+spanish_words_schema = SpanishWordSchema(many=True)
+
 # cli commands
 
 @app.cli.command('db_create')
