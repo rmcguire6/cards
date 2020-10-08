@@ -16,7 +16,7 @@ ma = Marshmallow(app)
 def create_tables():
     db.create_all()
 
-@app.route('/')
+@app.route('/api')
 def homepage():
     return ('homepage')
 
