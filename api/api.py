@@ -32,6 +32,23 @@ def get_english_words():
     result = english_words_schema.dump(english_list)
     return jsonify(result)
 
+@app.route('/api/spanish_words/<int:spanish_id>', methods=['GET'])
+def get_spanish_word(spanish_id: int):
+    spanish = Spanish.query.filter_by(spanish_id=spanish_id).first()
+    if spanish:
+        result = spanish_word_schema.dump(spanish)
+        return jsonify(result)
+    else:
+        return jsonify(message="That spanish word is not in the database."), 404
+
+@app.route('/api/english_words/<int:english_id>', methods=['GET'])
+def get_english_word(english_id: int):
+    english = English.query.filter_by(english_id=english_id).first()
+    if english:
+        result = english_word_schema.dump(english)
+        return jsonify(result)
+    else:
+        return jsonify(message="That english word is not in the database"), 404
 
 # database models
 
