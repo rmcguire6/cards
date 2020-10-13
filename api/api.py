@@ -41,11 +41,11 @@ class English(db.Model):
     __tablename__='english'
     id = Column(Integer, primary_key=True)
     english_word = Column(String, nullable=False)
-    spanish_match = Column(Integer, ForeignKey("spanish.id"))
+    spanish_match = Column(String, ForeignKey("spanish.word"))
 
 class EnglishSchema(ma.Schema):
     class Meta:
-        model = English
+        fields = ('id', 'english_word', 'spanish_match')
         include_fk = True
 
 english_word_schema = EnglishSchema()
@@ -82,13 +82,13 @@ def db_seed():
     db.session.add(hablar)
 
     live = English(english_word ='live',
-                    spanish_word = 'vivir')
+                    spanish_match = 'vivir')
 
     eat = English(english_word ='eat',
-                    spanish_word = 'comer')
+                    spanish_match = 'comer')
 
     speak = English(english_word ='speak',
-                    spanish_word = 'hablar')
+                    spanish_match = 'hablar')
 
     db.session.add(live)
     db.session.add(eat)
