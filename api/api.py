@@ -32,11 +32,12 @@ def get_english_words():
     result = english_words_schema.dump(english_list)
     return jsonify(result)
 
+
 # database models
 
 class Spanish(db.Model):
     __tablename__ = 'spanish'
-    id = Column(Integer, primary_key=True)
+    spanish_id = Column(Integer, primary_key=True)
     word = Column(String, nullable=False)
     part = Column(String, nullable=False)
     group = Column(String, default='')
@@ -44,20 +45,20 @@ class Spanish(db.Model):
 
 class SpanishSchema(ma.Schema):
     class Meta:
-        fields = ('id','word', 'part', 'group')
+        fields = ('spanish_id','word', 'part', 'group','english_match')
 
 spanish_word_schema = SpanishSchema()
 spanish_words_schema = SpanishSchema(many=True)
 
 class English(db.Model):
     __tablename__='english'
-    id = Column(Integer, primary_key=True)
+    english_id = Column(Integer, primary_key=True)
     english_word = Column(String, nullable=False)
     spanish_match = Column(String, ForeignKey("spanish.word"), nullable=False)
 
 class EnglishSchema(ma.Schema):
     class Meta:
-        fields = ('id', 'english_word', 'spanish_match')
+        fields = ('english_id', 'english_word', 'spanish_match')
         include_fk = True
 
 english_word_schema = EnglishSchema()
