@@ -20,6 +20,17 @@ def create_tables():
 def homepage():
     return ('homepage')
 
+@app.route('/api/spanish_words', methods=['GET'])
+def get_spanish_words():
+    spanish_list = Spanish.query.all()
+    result = spanish_words_schema.dump(spanish_list)
+    return jsonify(result)
+
+@app.route('/api/english_words', methods=['GET'])
+def get_english_words():
+    english_list = English.query.all()
+    result = english_words_schema.dump(english_list)
+    return jsonify(result)
 
 # database models
 
