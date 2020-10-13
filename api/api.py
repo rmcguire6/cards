@@ -20,6 +20,7 @@ def create_tables():
 def homepage():
     return ('homepage')
 
+
 # database models
 
 class Spanish(db.Model):
@@ -39,7 +40,7 @@ spanish_words_schema = SpanishSchema(many=True)
 class English(db.Model):
     __tablename__='english'
     id = Column(Integer, primary_key=True)
-    word = Column(String, nullable=False)
+    english_word = Column(String, nullable=False)
     spanish_match = Column(Integer, ForeignKey("spanish.id"))
 
 class EnglishSchema(ma.Schema):
@@ -56,6 +57,7 @@ english_words_schema = EnglishSchema(many=True)
 def db_create():
     db.create_all()
     print('Database created!')
+
 
 if __name__ == '__main__':
     app.run()
