@@ -40,6 +40,7 @@ class Spanish(db.Model):
     word = Column(String, nullable=False)
     part = Column(String, nullable=False)
     group = Column(String, default='')
+    english_match = Column(String, ForeignKey("english.english_word"), nullable=False)
 
 class SpanishSchema(ma.Schema):
     class Meta:
@@ -52,7 +53,7 @@ class English(db.Model):
     __tablename__='english'
     id = Column(Integer, primary_key=True)
     english_word = Column(String, nullable=False)
-    spanish_match = Column(String, ForeignKey("spanish.word"))
+    spanish_match = Column(String, ForeignKey("spanish.word"), nullable=False)
 
 class EnglishSchema(ma.Schema):
     class Meta:
@@ -78,15 +79,18 @@ def db_drop():
 def db_seed():
     vivir = Spanish(word = 'vivir',
                     part='verb',
-                    group='ir')
+                    group='ir',
+                    english_match='live')
 
     comer = Spanish(word = 'comer',
                     part='verb',
-                    group='er')
+                    group='er',
+                    english_match='eat')
 
     hablar = Spanish(word = 'hablar',
                     part='verb',
-                    group='ar')
+                    group='ar',
+                    english_match='speak')
 
     db.session.add(vivir)
     db.session.add(comer)
