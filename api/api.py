@@ -36,7 +36,7 @@ class SpanishSchema(ma.Schema):
 spanish_word_schema = SpanishSchema()
 spanish_words_schema = SpanishSchema(many=True)
 
-class EnglishWord(db.Model):
+class English(db.Model):
     __tablename__='english'
     id = Column(Integer, primary_key=True)
     word = Column(String, nullable=False)
@@ -60,4 +60,4 @@ def db_create():
 if __name__ == '__main__':
     app.run()
 
- 
+
