@@ -2,6 +2,7 @@ import React, { useEffect, useState} from 'react';
 import axios from 'axios'
 import './App.css';
 import Match from './Match'
+import createRandomList from './createRandomList'
 
 function App() {
   const [englishWords, setEnglishWords] = useState([])
@@ -11,7 +12,7 @@ function App() {
       try {
         const result = await axios.get('/english_words')
         const english = result.data
-        setEnglishWords(english.english_words)
+        setEnglishWords(createRandomList(english.english_words))
       } catch (error) {
       }
     }
