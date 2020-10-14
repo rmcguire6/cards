@@ -16,23 +16,23 @@ ma = Marshmallow(app)
 def create_tables():
     db.create_all()
 
-@app.route('/api')
+@app.route('/')
 def homepage():
     return ('homepage')
 
-@app.route('/api/spanish_words', methods=['GET'])
+@app.route('/spanish_words', methods=['GET'])
 def get_spanish_words():
     spanish_list = Spanish.query.all()
     result = spanish_words_schema.dump(spanish_list)
     return {"spanish_words": result}
 
-@app.route('/api/english_words', methods=['GET'])
+@app.route('/english_words', methods=['GET'])
 def get_english_words():
     english_list = English.query.all()
     result = english_words_schema.dump(english_list)
     return {"english_words": result}
 
-@app.route('/api/spanish_words/<int:spanish_id>', methods=['GET'])
+@app.route('/spanish_words/<int:spanish_id>', methods=['GET'])
 def get_spanish_word(spanish_id: int):
     spanish = Spanish.query.filter_by(spanish_id=spanish_id).first()
     if spanish:
@@ -41,7 +41,7 @@ def get_spanish_word(spanish_id: int):
     else:
         return jsonify(message="That spanish word is not in the database."), 404
 
-@app.route('/api/english_words/<int:english_id>', methods=['GET'])
+@app.route('/english_words/<int:english_id>', methods=['GET'])
 def get_english_word(english_id: int):
     english = English.query.filter_by(english_id=english_id).first()
     if english:
