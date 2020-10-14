@@ -24,13 +24,13 @@ def homepage():
 def get_spanish_words():
     spanish_list = Spanish.query.all()
     result = spanish_words_schema.dump(spanish_list)
-    return jsonify(result)
+    return {"spanish_words": result}
 
 @app.route('/api/english_words', methods=['GET'])
 def get_english_words():
     english_list = English.query.all()
     result = english_words_schema.dump(english_list)
-    return jsonify(result)
+    return {"english_words": result}
 
 @app.route('/api/spanish_words/<int:spanish_id>', methods=['GET'])
 def get_spanish_word(spanish_id: int):
