@@ -1,12 +1,18 @@
 import React, { useEffect, useState} from 'react';
 import axios from 'axios'
-import './App.css';
 import Match from './Match'
+import Verbs from './Verbs'
 import createRandomList from './createRandomList'
+// import './App.css'
 
 function App() {
   const [englishWords, setEnglishWords] = useState([])
   const [spanishWords, setSpanishWords] = useState([])
+  const randomEnglishWord = 'eat'
+  const randomSpanishWord = {
+    word: 'comer',
+    group: 'er'
+  }
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -29,6 +35,7 @@ function App() {
     }
     fetchData()
   }, [])
+
   return (
     <div className="App">
       <header>
@@ -37,6 +44,7 @@ function App() {
       <Match englishWords={englishWords}
         spanishWords={spanishWords}
       />
+      <Verbs english={randomEnglishWord} spanish={randomSpanishWord}/>
     </div>
   );
 }
