@@ -2,17 +2,14 @@ import React, { useEffect, useState} from 'react';
 import axios from 'axios'
 import Match from './Match'
 import Verbs from './Verbs'
+import MatchesContext from './matches-context'
 import createRandomList from './createRandomList'
-// import './App.css'
+import './App.css'
 
 function App() {
   const [englishWords, setEnglishWords] = useState([])
   const [spanishWords, setSpanishWords] = useState([])
-  const randomEnglishWord = 'eat'
-  const randomSpanishWord = {
-    word: 'comer',
-    group: 'er'
-  }
+ 
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -37,15 +34,15 @@ function App() {
   }, [])
 
   return (
+    <MatchesContext.Provider value = {{ englishWords, setEnglishWords, spanishWords, setSpanishWords }} >
     <div className="App">
       <header>
         <h1>Fast Cards</h1>
       </header>
-      <Match englishWords={englishWords}
-        spanishWords={spanishWords}
-      />
-      <Verbs english={randomEnglishWord} spanish={randomSpanishWord}/>
+      <Match />
+      <Verbs />
     </div>
+    </MatchesContext.Provider>
   );
 }
 

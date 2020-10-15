@@ -2,9 +2,14 @@ import React, { useEffect, useState } from 'react'
 import createRandomList from './createRandomList'
 import './App.css'
 
-const Verbs = ({spanish, english}) => {
+const Verbs = () => {
   const [spanishList, setSpanishList] = useState([])
   const [englishList, setEnglishList] = useState([])
+  const english = 'eat'
+  const spanish = {
+    word: 'comer',
+    group: 'er'
+  }
   const createSpanishTenses = (inf, conj) => {
     let spanishTenses = []
     const stem = inf.slice(0, inf.length - 1)

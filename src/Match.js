@@ -1,5 +1,8 @@
-import React from 'react'
-const Match = ({englishWords, spanishWords}) => {
+import React, {useContext} from 'react'
+import MatchesContext from './matches-context'
+import './App.css'
+const Match = () => {
+  const {spanishWords, englishWords} = useContext(MatchesContext)
   return (
     <div className='container'>
       <h2>Match</h2>
