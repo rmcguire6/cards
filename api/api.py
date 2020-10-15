@@ -95,33 +95,45 @@ def db_drop():
 
 @app.cli.command('db_seed')
 def db_seed():
-    vivir = Spanish(word = 'vivir',
-                    part='verb',
-                    group='ir',
-                    english_match='live')
+    vivir = Spanish(
+        spanish_id = 9999,
+        word = 'vivir',
+        part='verb',
+        group='ir',
+        english_match='live')
 
-    comer = Spanish(word = 'comer',
-                    part='verb',
-                    group='er',
-                    english_match='eat')
+    comer = Spanish(
+        spanish_id = 9998,
+        word = 'comer',
+        part='verb',
+        group='er',
+        english_match='eat')
 
-    hablar = Spanish(word = 'hablar',
-                    part='verb',
-                    group='ar',
-                    english_match='speak')
+    hablar = Spanish(
+        spanish_id = 9997,
+        word = 'hablar',
+        part='verb',
+        group='ar',
+        english_match='speak')
 
     db.session.add(vivir)
     db.session.add(comer)
     db.session.add(hablar)
 
-    live = English(english_word ='live',
-                    spanish_match = 'vivir')
+    live = English(
+        english_id = 8001,
+        english_word ='live',
+        spanish_match = 'vivir')
 
-    eat = English(english_word ='eat',
-                    spanish_match = 'comer')
+    eat = English(
+        english_id = 8002,
+        english_word ='eat',
+        spanish_match = 'comer')
 
-    speak = English(english_word ='speak',
-                    spanish_match = 'hablar')
+    speak = English(
+        english_id = 8003,
+        english_word ='speak',
+        spanish_match = 'hablar')
 
     db.session.add(live)
     db.session.add(eat)
