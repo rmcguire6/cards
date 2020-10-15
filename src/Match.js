@@ -6,15 +6,15 @@ const Match = ({englishWords, spanishWords}) => {
         <div className='lists'>
         <div className='list'>
             {spanishWords.map(spanish => (
-                <div key={spanish.spanish_id}>
-                  <p>{spanish.word}</p>
+                <div className="card" key={spanish.spanish_id}>
+                  <button className="button">{spanish.word}</button>
                 </div>
             ))}
         </div>
         <div className='list'>
             {englishWords.map(english => (
-                <div key={english.english_id}>
-                  <p>{` to ${english.english_word}`}</p>
+                <div className="card" key={english.english_id}>
+                  <button className="button">{` to ${english.english_word}`}</button>
                 </div>
             ))}
         </div>

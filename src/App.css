@@ -1,6 +1,15 @@
 .App {
   text-align: center;
 }
+.button {
+  background-color: dodgerblue;
+  border: 2px solid;
+  font-weight: bold;
+  padding: .5em;
+}
+.card {
+  padding: 1em;
+}
 .container {
   display: flex;
   flex-direction: column;
