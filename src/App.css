@@ -26,3 +26,15 @@ padding-right: 1em;
 .lists {
     display: flex;
 }
+.navlist {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+}
+.navlist--item {
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: bold;
+  padding: 0 .2em;
+  margin: 0 .2em;
+}

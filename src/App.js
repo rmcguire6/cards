@@ -1,7 +1,6 @@
 import React, { useEffect, useState} from 'react';
 import axios from 'axios'
-import Match from './Match'
-import Verbs from './Verbs'
+import AppRouter from './AppRouter'
 import MatchesContext from './matches-context'
 import createRandomList from './createRandomList'
 import './App.css'
@@ -39,8 +38,7 @@ function App() {
       <header>
         <h1>Fast Cards</h1>
       </header>
-      <Match />
-      <Verbs />
+      <AppRouter />
     </div>
     </MatchesContext.Provider>
   );
