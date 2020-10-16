@@ -5,6 +5,8 @@ import './App.css'
 const Verbs = () => {
   const [spanishList, setSpanishList] = useState([])
   const [englishList, setEnglishList] = useState([])
+  const [selectedEnglishWord, setSelectedEnglishWord] = useState('')
+  const [selectedSpanishWord, setSelectedSpanishWord] = useState('')
   const english = 'eat'
   const spanish = {
     word: 'comer',
@@ -38,7 +40,12 @@ const Verbs = () => {
     setEnglishList(createRandomList(createEnglishTenses(english)))
   // eslint-disable-next-line
   }, [])
-  
+  const handleEnglishClick =(item) => {
+    setSelectedEnglishWord(item)
+  }
+  const handleSpanishClick =(item) => {
+    setSelectedSpanishWord(item)
+  }
   return (
     <div className='container'>
       <h2>Match the Verb Forms</h2>
@@ -46,18 +53,19 @@ const Verbs = () => {
         <div className='list'>
           {spanishList.map((word) => (
             <div className='card' key={word.pers}> 
-            <button className='button'>{word.tense}</button>
+            <button className='button' onClick={() => handleSpanishClick(word.pers)}>{word.tense}</button>
             </div>
           ))}
         </div>
         <div className='list'>
           {englishList.map((word) => (
             <div className='card' key={word.pers}> 
-             <button className='button'>{word.tense}</button>
+             <button className='button' onClick={() => handleEnglishClick(word.pers)}>{word.tense}</button>
             </div>
           ))}
         </div>
       </div>
+      {selectedSpanishWord !== '' && selectedSpanishWord === selectedEnglishWord ? <p>Words Match</p> : <p>Words Don't Match</p>}
     </div>
   )
 }
