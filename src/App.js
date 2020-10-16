@@ -2,7 +2,6 @@ import React, { useEffect, useState} from 'react';
 import axios from 'axios'
 import AppRouter from './AppRouter'
 import MatchesContext from './matches-context'
-import createRandomList from './createRandomList'
 import './App.css'
 
 function App() {
@@ -14,7 +13,7 @@ function App() {
       try {
         const result = await axios.get('/english_words')
         const english = result.data
-        setEnglishWords(createRandomList(english.english_words))
+        setEnglishWords(english.english_words)
       } catch (error) {
       }
     }
@@ -33,7 +32,7 @@ function App() {
   }, [])
 
   return (
-    <MatchesContext.Provider value = {{ englishWords, setEnglishWords, spanishWords, setSpanishWords }} >
+    <MatchesContext.Provider value = {{ englishWords, spanishWords }} >
     <div className="App">
       <header>
         <h1>Fast Cards</h1>
