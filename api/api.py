@@ -116,9 +116,25 @@ def db_seed():
         group='ar',
         english_match='speak')
 
+    estudiar = Spanish(
+        spanish_id = 9996,
+        word = 'estudiar',
+        part='verb',
+        group='ar',
+        english_match='study')
+
+    dormir = Spanish(
+        spanish_id = 9995,
+        word = 'dormir',
+        part='verb',
+        group='ir',
+        english_match='sleep')
+
     db.session.add(vivir)
     db.session.add(comer)
     db.session.add(hablar)
+    db.session.add(estudiar)
+    db.session.add(dormir)
 
     live = English(
         english_id = 8001,
@@ -135,9 +151,22 @@ def db_seed():
         english_word ='speak',
         spanish_match = 'hablar')
 
+    study = English(
+        english_id = 8004,
+        english_word ='study',
+        spanish_match = 'estudiar')
+
+    sleep = English(
+        english_id = 8005,
+        english_word ='sleep',
+        spanish_match = 'dormir')
+
     db.session.add(live)
     db.session.add(eat)
     db.session.add(speak)
+    db.session.add(study)
+    db.session.add(sleep)
+
     db.session.commit()
     print('Database seeded!')
 
