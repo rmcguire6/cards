@@ -7,6 +7,7 @@ const Verbs = () => {
   const [englishList, setEnglishList] = useState([])
   const [selectedEnglishWord, setSelectedEnglishWord] = useState('')
   const [selectedSpanishWord, setSelectedSpanishWord] = useState('')
+
   const english = 'eat'
   const spanish = {
     word: 'comer',
@@ -64,8 +65,17 @@ const Verbs = () => {
             </div>
           ))}
         </div>
-      </div>
-      {selectedSpanishWord !== '' && selectedSpanishWord === selectedEnglishWord ? <p>Words Match</p> : <p>Words Don't Match</p>}
+        </div>
+        <div>
+          {selectedSpanishWord.length === 0 ? 
+          (<span className="bold">No Words Selected</span>) : (
+    <>
+   <h3>Results</h3>
+   {selectedSpanishWord === selectedEnglishWord ? 
+   <p className='button green'>Words Match</p> : <p className='button red'>Words Do Not Match</p>}
+   </>
+)}
+        </div>
     </div>
   )
 }
