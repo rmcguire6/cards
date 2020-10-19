@@ -37,7 +37,16 @@ const Match = () => {
             ))}
         </div>
       </div>
-      {selectedSpanishWord !== '' && selectedSpanishWord === selectedEnglishWord ? <p>Words Match</p> : <p>Words Don't Match</p>}
+      <div>
+          {selectedSpanishWord.length === 0 ? 
+          (<span className="bold">No Words Selected</span>) : (
+    <>
+   <h3>Results</h3>
+   {selectedSpanishWord === selectedEnglishWord ?
+    <p className='button green'>Words Match</p> : <p className='button red'>Words Do Not Match</p>}
+   </>
+)}
+        </div>
     </div>
   )
 }
