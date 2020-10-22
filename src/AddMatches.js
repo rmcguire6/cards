@@ -19,11 +19,12 @@ const AddMatches = () => {
     <>
       <h3>Add a Word Match</h3>
       <form onSubmit={addMatch}>
-        <div className='form'>
-          <div className='form_input container'>
+        <div>
+          <div className='container'>
             <label htmlFor='spanish' className="bold label">Spanish</label>
             <input name='spanish' value={spanish} onChange={(e) => setSpanish(e.target.value)} />
             <p className='bold'>Select a part of speech</p>
+            <div className='radio'>
             <div>
                 <label>
                 <input
@@ -59,8 +60,9 @@ const AddMatches = () => {
                 Other
                 </label>
             </div>
+            </div>
           </div>
-          <div className='form_input container'>
+          <div className='container'>
             <label htmlFor='english' className="bold label">English</label>
             <input name='english' value={english} onChange={(e) => setEnglish(e.target.value)} />
           </div>
