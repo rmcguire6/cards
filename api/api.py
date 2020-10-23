@@ -55,14 +55,14 @@ def get_english_word(english_id: int):
 class Spanish(db.Model):
     __tablename__ = 'spanish'
     spanish_id = Column(Integer, primary_key=True)
-    word = Column(String, nullable=False)
+    spanish = Column(String, nullable=False)
     part = Column(String, nullable=False)
     group = Column(String, default='')
-    english_match = Column(String, ForeignKey("english.english_word"), nullable=False)
+    english_match = Column(String, ForeignKey("english.english"), nullable=False)
 
 class SpanishSchema(ma.Schema):
     class Meta:
-        fields = ('spanish_id','word', 'part', 'group','english_match')
+        fields = ('spanish_id','spanish', 'part', 'group','english_match')
 
 spanish_word_schema = SpanishSchema()
 spanish_words_schema = SpanishSchema(many=True)
@@ -70,12 +70,12 @@ spanish_words_schema = SpanishSchema(many=True)
 class English(db.Model):
     __tablename__='english'
     english_id = Column(Integer, primary_key=True)
-    english_word = Column(String, nullable=False)
-    spanish_match = Column(String, ForeignKey("spanish.word"), nullable=False)
+    english = Column(String, nullable=False)
+    spanish_match = Column(String, ForeignKey("spanish.spanish"), nullable=False)
 
 class EnglishSchema(ma.Schema):
     class Meta:
-        fields = ('english_id', 'english_word', 'spanish_match')
+        fields = ('english_id', 'english', 'spanish_match')
         include_fk = True
 
 english_word_schema = EnglishSchema()
@@ -97,35 +97,35 @@ def db_drop():
 def db_seed():
     vivir = Spanish(
         spanish_id = 9999,
-        word = 'vivir',
+        spanish = 'vivir',
         part='verb',
         group='ir',
         english_match='live')
 
     comer = Spanish(
         spanish_id = 9998,
-        word = 'comer',
+        spanish = 'comer',
         part='verb',
         group='er',
         english_match='eat')
 
     hablar = Spanish(
         spanish_id = 9997,
-        word = 'hablar',
+        spanish = 'hablar',
         part='verb',
         group='ar',
         english_match='speak')
 
     estudiar = Spanish(
         spanish_id = 9996,
-        word = 'estudiar',
+        spanish = 'estudiar',
         part='verb',
         group='ar',
         english_match='study')
 
     dormir = Spanish(
         spanish_id = 9995,
-        word = 'dormir',
+        spanish = 'dormir',
         part='verb',
         group='ir',
         english_match='sleep')
@@ -138,27 +138,27 @@ def db_seed():
 
     live = English(
         english_id = 8001,
-        english_word ='live',
+        english ='live',
         spanish_match = 'vivir')
 
     eat = English(
         english_id = 8002,
-        english_word ='eat',
+        english ='eat',
         spanish_match = 'comer')
 
     speak = English(
         english_id = 8003,
-        english_word ='speak',
+        english ='speak',
         spanish_match = 'hablar')
 
     study = English(
         english_id = 8004,
-        english_word ='study',
+        english ='study',
         spanish_match = 'estudiar')
 
     sleep = English(
         english_id = 8005,
-        english_word ='sleep',
+        english ='sleep',
         spanish_match = 'dormir')
 
     db.session.add(live)

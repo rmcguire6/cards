@@ -25,14 +25,14 @@ const Match = () => {
         <div className='list'>
             {displaySpanishWords.map(spanish => (
                 <div className="card" key={spanish.spanish_id}>
-                  <button className="button" onClick={() => handleSpanishClick(spanish.word)}>{spanish.word}</button>
+                  <button className="button" onClick={() => handleSpanishClick(spanish.spanish)}>{spanish.spanish}</button>
                 </div>
             ))}
         </div>
         <div className='list'>
             {displayEnglishWords.map(english => (
                 <div className="card" key={english.english_id}>
-                  <button className="button" onClick={() => handleEnglishClick(english.spanish_match)}>{` to ${english.english_word}`}</button>
+                  <button className="button" onClick={() => handleEnglishClick(english.spanish_match)}>{` to ${english.english}`}</button>
                 </div>
             ))}
         </div>
