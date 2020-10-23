@@ -53,3 +53,6 @@ padding-right: 1em;
   flex-direction: row;
   margin-bottom: .5em;
 }
+.white {
+  background-color: white;
+}

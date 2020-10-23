@@ -69,7 +69,7 @@ const Verbs = () => {
         <div>
           <h3>Results</h3>
           {selectedSpanishWord.length === 0 ? 
-          (<span className="bold">No Words Selected</span>) : (
+          (<span className="button white">No Words Selected</span>) : (
     <>
    {selectedSpanishWord === selectedEnglishWord ? 
    <p className='button green'>Words Match</p> : <p className='button red'>Words Do Not Match</p>}
