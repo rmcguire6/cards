@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import {sendMatch} from './axios'
 import './App.css'
 
 const AddMatches = () => {
@@ -8,9 +9,7 @@ const AddMatches = () => {
 
   const addMatch = (e) => {
     e.preventDefault()
-    const spanishWord = {word: spanish, part: selectedPartOfSpeech, group: '', english_match: english }
-    const englishWord = {english: english, spanish_match: spanish}
-    console.log('spanish', spanishWord, 'english', englishWord)
+    sendMatch({spanish:spanish, english:english, part: selectedPartOfSpeech, group: '', spanish_match: spanish, english_match: english})
     setSpanish('')
     setEnglish('')
   }

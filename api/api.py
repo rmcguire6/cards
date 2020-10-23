@@ -32,6 +32,26 @@ def get_english_words():
     result = english_words_schema.dump(english_list)
     return {"english_words": result}
 
+@app.route('/add_match', methods=['POST'])
+def add_match():
+    if request.is_json:
+        spanish = request.json['spanish']
+        english = request.json['english']
+        part = request.json['part']
+        group = request.json['group']
+        english_match = request.json['english_match']
+        spanish_match = request.json['spanish_match']
+    test = Spanish.query.filter_by(spanish=spanish).first()
+    if test:
+        return jsonify(message='That spanish and english word match is already in the database'), 409
+    else:
+        spanish_word = Spanish(spanish=spanish, part=part, group=group, english_match=english_match)
+        english_word = English(english=english, spanish_match=spanish_match)
+        db.session.add(spanish_word)
+        db.session.add(english_word)
+        db.session.commit()
+        return jsonify(message='That match was successfully added to the database.'), 201
+
 @app.route('/spanish_words/<int:spanish_id>', methods=['GET'])
 def get_spanish_word(spanish_id: int):
     spanish = Spanish.query.filter_by(spanish_id=spanish_id).first()
