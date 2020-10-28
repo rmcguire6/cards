@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Results from './Results'
 import createRandomList from './createRandomList'
 import './App.css'
 
@@ -8,7 +9,10 @@ const Nouns = () => {
   const [selectedEnglishWord, setSelectedEnglishWord] = useState('')
   const [selectedSpanishWord, setSelectedSpanishWord] = useState('')
 
-  const english = 'ball'
+  const english = {
+    english:'ball',
+    part: 'noun'
+  }
   const spanish = {
     spanish: 'pelota',
     part: 'noun',
@@ -17,11 +21,11 @@ const Nouns = () => {
   const createSpanishCases = (spanish, group) => {
     let spanishCases = []
     if (group === 'fem') {
-      spanishCases = [{ num: 'sing', case: `la ${spanish}` },
-        { num: 'plural', case: `las ${spanish}s` }]
+      spanishCases = [{ num: 'sing', case: `${spanish}` },
+        { num: 'plural', case: `${spanish}s` }]
     } else {
-        spanishCases = [{ num: 'sing', case: `el ${spanish}` },
-        { num: 'plural', case: `los ${spanish}s` }]
+        spanishCases = [{ num: 'sing', case: `${spanish}` },
+        { num: 'plural', case: `${spanish}s` }]
     }
     return spanishCases
   }
@@ -31,7 +35,7 @@ const Nouns = () => {
   }
   useEffect(() => {
     setSpanishList(createSpanishCases(spanish.spanish, spanish.group))
-    setEnglishList(createRandomList(createEnglishCases(english)))
+    setEnglishList(createRandomList(createEnglishCases(english.english)))
   // eslint-disable-next-line
   }, [])
   const handleEnglishClick =(item) => {
@@ -40,6 +44,7 @@ const Nouns = () => {
   const handleSpanishClick =(item) => {
     setSelectedSpanishWord(item)
   }
+
   return (
     <div className='container'>
       <h2>Match the Nouns</h2>
@@ -58,17 +63,11 @@ const Nouns = () => {
             </div>
           ))}
         </div>
-        </div>
-        <div>
-          <h3>Results</h3>
-          {selectedSpanishWord.length === 0 ?
-          (<span className="button">No Words Selected</span>) : (
-    <>
-   {selectedSpanishWord === selectedEnglishWord ?
-   <p className='button green'>Words Match</p> : <p className='button red'>Words Do Not Match</p>}
-   </>
-)}
-        </div>
+      </div>
+      <div>
+      <h3>Results</h3>
+          <Results spanishWord={selectedSpanishWord} englishWord={selectedEnglishWord} />
+      </div>
     </div>
   )
 }
