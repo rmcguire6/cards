@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
-import AddMatches from './AddMatches' 
+import AddMatches from './AddMatches'
+import Gender from './Gender'
 import Match from './Match'
 import Nouns from './Nouns'
 import Verbs from './Verbs'
@@ -21,6 +22,9 @@ const AppRouter = () => {
               <Link to='/match_nouns' className='navlist--item'>Match Nouns</Link>
             </li>
             <li>
+              <Link to='/match_gender' className='navlist--item'>Match Gender</Link>
+            </li>
+            <li>
               <Link to='/add_match' className='navlist--item'>Add A Match</Link>
             </li>
           </ul>
@@ -31,6 +35,9 @@ const AppRouter = () => {
           </Route>
           <Route path='/match_nouns'>
             <Nouns />
+          </Route>
+          <Route path='/match_gender'>
+            <Gender />
           </Route>
           <Route path='/add_match'>
             <AddMatches />
