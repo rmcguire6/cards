@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Results from './Results'
 import createRandomList from './createRandomList'
 import './App.css'
 
@@ -68,13 +69,7 @@ const Verbs = () => {
         </div>
         <div>
           <h3>Results</h3>
-          {selectedSpanishWord.length === 0 ? 
-          (<span className="button white">No Words Selected</span>) : (
-    <>
-   {selectedSpanishWord === selectedEnglishWord ? 
-   <p className='button green'>Words Match</p> : <p className='button red'>Words Do Not Match</p>}
-   </>
-)}
+          <Results spanishWord={selectedSpanishWord} englishWord={selectedEnglishWord} />
         </div>
     </div>
   )
