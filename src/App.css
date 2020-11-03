@@ -54,7 +54,7 @@ padding-right: 1em;
 .red {
   background-color: red;
 }
-.radio {
+.line {
   display: flex;
   flex-direction: row;
   margin-bottom: .5em;
