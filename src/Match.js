@@ -1,4 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react'
+import Results from './Results'
 import MatchesContext from './matches-context'
 import createRandomList from './createRandomList'
 import './App.css'
@@ -32,22 +33,13 @@ const Match = () => {
         <div className='list'>
             {displayEnglishWords.map(english => (
                 <div className="card" key={english.english_id}>
-                  <button className="button" onClick={() => handleEnglishClick(english.spanish_match)}>{` to ${english.english}`}</button>
+                  <button className="button" onClick={() => handleEnglishClick(english.spanish_match)}>{`${english.english}`}</button>
                 </div>
             ))}
         </div>
       </div>
       <h3>Results</h3>
-      <div>
-          {selectedSpanishWord.length === 0 ? 
-          (<span className="button white">No Words Selected</span>) : (
-    <>
-   
-   {selectedSpanishWord === selectedEnglishWord ?
-    <p className='button green'>Words Match</p> : <p className='button red'>Words Do Not Match</p>}
-   </>
-)}
-        </div>
+      <Results spanishWord={selectedSpanishWord} englishWord={selectedEnglishWord} />
     </div>
   )
 }
