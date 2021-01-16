@@ -33,10 +33,7 @@ function App() {
 
   return (
     <MatchesContext.Provider value = {{ englishWords, spanishWords }} >
-    <div className="App">
-      <header>
-        <h1>Fast Cards</h1>
-      </header>
+    <div className="container">
       <AppRouter />
     </div>
     </MatchesContext.Provider>
