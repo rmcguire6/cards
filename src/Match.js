@@ -2,7 +2,6 @@ import React, {useContext, useEffect, useState} from 'react'
 import Results from './Results'
 import MatchesContext from './matches-context'
 import createRandomList from './createRandomList'
-import './App.css'
 const Match = () => {
   const {spanishWords, englishWords} = useContext(MatchesContext)
   const [displaySpanishWords, setDisplaySpanishWords] = useState([])
@@ -10,8 +9,8 @@ const Match = () => {
   const [selectedEnglishWord, setSelectedEnglishWord] = useState('')
   const [selectedSpanishWord, setSelectedSpanishWord] = useState('')
   useEffect(() => {
-        setDisplayEnglishWords(createRandomList(englishWords))
-        setDisplaySpanishWords(spanishWords)
+    setDisplayEnglishWords(createRandomList(englishWords))
+    setDisplaySpanishWords(spanishWords)
   }, [englishWords, spanishWords])
   const handleEnglishClick =(item) => {
     setSelectedEnglishWord(item)
@@ -23,20 +22,20 @@ const Match = () => {
     <div className='container'>
       <h2>Match</h2>
         <div className='lists'>
-        <div className='list'>
+          <div>
             {displaySpanishWords.map(spanish => (
                 <div className="card" key={spanish.spanish_id}>
                   <button className="button" onClick={() => handleSpanishClick(spanish.spanish)}>{spanish.spanish}</button>
                 </div>
             ))}
-        </div>
-        <div className='list'>
+          </div>
+          <div>
             {displayEnglishWords.map(english => (
                 <div className="card" key={english.english_id}>
                   <button className="button" onClick={() => handleEnglishClick(english.spanish_match)}>{`${english.english}`}</button>
                 </div>
             ))}
-        </div>
+          </div>
       </div>
       <h3>Results</h3>
       <Results spanishWord={selectedSpanishWord} englishWord={selectedEnglishWord} />

@@ -1,64 +1,57 @@
-.App {
-  text-align: center;
-}
-.bold {
-  font-weight: 700;
-}
 .button {
   background-color: oldlace;
   border: 2px solid;
+  border-radius: 10%;
   font-weight: bold;
   padding: .5em;
   margin: .25em;
 }
-.card {
-  padding: 1em;
-}
+
 .container {
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-.gender {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: center;
 }
+
 .green {
   background-color: green;
 }
-.list {
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-padding-left: 1em;
-padding-right: 1em;
+.label {
+  font-weight: bold;
 }
 .lists {
-    display: flex;
+  display: flex;
+  padding: 1em;
+  align-items: flex-start;
 }
 .navlist {
+  padding: 0;
   display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
   list-style-type: none;
-  justify-content: center;
 }
+
 .navlist--item {
+  margin: 5px;
   text-decoration: none;
   font-size: 1em;
   font-weight: bold;
-  padding: 0 .2em;
-  margin: 0 .2em;
 }
+
 .red {
   background-color: red;
 }
-.line {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: .5em;
+
+h1 {
+  font-size: 1.6em;
+  margin-top: 0;
+  margin-bottom: 0;
 }
-.white {
-  background-color: white;
+h2 {
+  font-size: 1.2em;
+  margin-top: 0;
+  margin-bottom: 0;
 }

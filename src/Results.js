@@ -1,5 +1,4 @@
 import React from 'react'
-import './App.css'
 
 const Results = ({spanishWord, englishWord }) => {
     console.log('spanish', spanishWord, 'english', englishWord)

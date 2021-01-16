@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import {sendMatch} from './axios'
-import './App.css'
 
 const AddMatches = () => {
   const [english, setEnglish] = useState('')
@@ -8,7 +7,6 @@ const AddMatches = () => {
   const [selectedPartOfSpeech, setSelectedPartOfSpeech] = useState('verb')
   const [group, setGroup] = useState('')
   const [isHidden, setIsHidden] = useState(true)
-
   const setPartOfSpeech = (partOfSpeech) => {
     setSelectedPartOfSpeech(partOfSpeech)
     if (partOfSpeech === 'noun') {
@@ -20,7 +18,7 @@ const AddMatches = () => {
     if (selectedPartOfSpeech === 'noun') {
       setGroup(group)
     }
-    sendMatch({spanish:spanish, english:english, part: selectedPartOfSpeech, group: group, spanish_match: spanish, english_match: english})
+    sendMatch({spanish:spanish, english:english, part: 'verb', group: group, spanish_match: spanish, english_match: english})
     setSpanish('')
     setEnglish('')
     setGroup('')
@@ -32,32 +30,34 @@ const AddMatches = () => {
       <h3>Add a Word Match</h3>
       <form onSubmit={addMatch}>
         <div className='container'>
-          <label htmlFor='spanish' className="bold label">Spanish</label>
+          <label htmlFor='spanish' className="label">Spanish</label>
           {isHidden? <></> :
           <div>
             <select
               value={group}
+              className='label'
               onChange={(e) => setGroup(e.target.value)}
             >
-              <option value="fem">La</option>
-              <option value="masc">El</option>
+              <option className='label' value="fem">La</option>
+              <option className='label' value="masc">El</option>
             </select>
           </div>}
           <input name='spanish' value={spanish} onChange={(e) => setSpanish(e.target.value)} />
         </div>
-        <p className='bold'>Select a part of speech</p>
-        <div>
+          <h4>Select a part of speech</h4>
+          <div>
             <select
               value={selectedPartOfSpeech}
+              className='label'
               onChange={(e) => setPartOfSpeech(e.target.value)}
             >
-              <option value="verb">Verb</option>
-              <option value="noun">Noun</option>
-              <option value="other">Other</option>
+              <option className="label" value="verb">Verb</option>
+              <option className="label" value="noun">Noun</option>
+              <option className="label" value="other">Other</option>
             </select>
         </div>
         <div className='container'>
-          <label htmlFor='english' className="bold label">English</label>
+          <label htmlFor='english' className="label">English</label>
           <input name='english' value={english} onChange={(e) => setEnglish(e.target.value)} />
         </div>
         <button className='button'>Add a word pair</button>
