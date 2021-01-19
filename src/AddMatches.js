@@ -8,7 +8,7 @@ const AddMatches = () => {
   const group = ''
   const addMatch = (e) => {
     e.preventDefault()
-    sendMatch({spanish:spanish, english:english, part: 'verb', group: group, spanish_match: spanish, english_match: english})
+    sendMatch({spanish:spanish, english:english, part: selectedPartOfSpeech, group: group, spanish_match: spanish, english_match: english})
     setSpanish('')
     setEnglish('')
   }
