@@ -9,6 +9,7 @@ const Match = () => {
   const [displayEnglishWords, setDisplayEnglishWords] = useState([])
   const [selectedEnglishWord, setSelectedEnglishWord] = useState('')
   const [selectedSpanishWord, setSelectedSpanishWord] = useState('')
+  const [isHidden, setIsHidden] = useState(true)
 
   useEffect(() => {
     setDisplayEnglishWords(createRandomList(englishWords))
@@ -16,11 +17,16 @@ const Match = () => {
   }, [englishWords, spanishWords])
   const handleEnglishClick =(item) => {
     setSelectedEnglishWord(item)
+    handleMatch()
   }
   const handleSpanishClick =(item) => {
     setSelectedSpanishWord(item)
+    handleMatch()
   }
-
+  const handleMatch = () => {
+    console.log(`match spanish  ${selectedSpanishWord} to ${selectedEnglishWord}`)
+    setIsHidden(false)
+  }
   return (
     <div className='container'>
       <h2>Match</h2>
@@ -29,22 +35,27 @@ const Match = () => {
             {displaySpanishWords.map(spanish => (
                 <Card key={spanish.spanish_id}
                 word={spanish.spanish}
-                handleClick={() => handleSpanishClick(spanish.spanish)}/>
+                handleClick={() => handleSpanishClick(spanish.spanish)}
+                />
             ))}
           </div>
           <div>
             {displayEnglishWords.map(english => (
                 <Card key={english.english_id}
                 word={english.english}
-                handleClick={()=> handleEnglishClick(english.spanish_match)}/>
+                handleClick={()=> handleEnglishClick(english.spanish_match)}
+                />
             ))}
           </div>
       </div>
-      <h3>Results</h3>
-      <Results
-      spanishWord={selectedSpanishWord}
-      englishWord={selectedEnglishWord}
-      />
+      {isHidden? <></> :
+       <>
+       <h3>Results</h3>
+       <Results
+       spanishWord={selectedSpanishWord}
+       englishWord={selectedEnglishWord}
+       />
+       </>}
     </div>
   )
 }
