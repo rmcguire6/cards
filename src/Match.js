@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react'
 import Card from './Card'
-import Results from './Results'
+import Display from './Display'
 import MatchesContext from './matches-context'
 import createRandomList from './createRandomList'
 const Match = () => {
@@ -50,7 +50,7 @@ const Match = () => {
       </div>
       {isHidden? <></> :
        <>
-       <Results
+       <Display
        spanishWord={selectedSpanishWord}
        englishWord={selectedEnglishWord}
        />

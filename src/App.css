@@ -7,8 +7,14 @@
   margin: .25em;
 }
 .display {
+  border: 2px solid;
+  border-radius: 10%;
   font-weight: bold;
   margin: .25em;
+  padding: .5em;
+}
+.display_word {
+  margin: 0;
 }
 .container {
   text-align: center;
