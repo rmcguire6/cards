@@ -35,7 +35,7 @@ const Match = () => {
             {displaySpanishWords.map(spanish => (
                 <Card key={spanish.spanish_id}
                 word={spanish.spanish}
-                handleClick={() => handleSpanishClick(spanish.spanish)}
+                handleClick={() => handleSpanishClick(spanish)}
                 />
             ))}
           </div>
@@ -43,14 +43,13 @@ const Match = () => {
             {displayEnglishWords.map(english => (
                 <Card key={english.english_id}
                 word={english.english}
-                handleClick={()=> handleEnglishClick(english.spanish_match)}
+                handleClick={()=> handleEnglishClick(english)}
                 />
             ))}
           </div>
       </div>
       {isHidden? <></> :
        <>
-       <h3>Results</h3>
        <Results
        spanishWord={selectedSpanishWord}
        englishWord={selectedEnglishWord}
