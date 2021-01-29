@@ -24,12 +24,18 @@ const Match = () => {
     handleMatch()
   }
   const handleMatch = () => {
-    console.log(`match spanish  ${selectedSpanishWord} to ${selectedEnglishWord}`)
     setIsHidden(false)
   }
   return (
     <div className='container'>
       <h2>Match</h2>
+      {isHidden? <></> :
+        <>
+       <Display
+        spanishWord={selectedSpanishWord}
+        englishWord={selectedEnglishWord}
+       />
+       </>}
         <div className='lists'>
           <div>
             {displaySpanishWords.map(spanish => (
@@ -48,13 +54,6 @@ const Match = () => {
             ))}
           </div>
       </div>
-      {isHidden? <></> :
-       <>
-       <Display
-       spanishWord={selectedSpanishWord}
-       englishWord={selectedEnglishWord}
-       />
-       </>}
     </div>
   )
 }
